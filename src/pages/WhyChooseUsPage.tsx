@@ -25,7 +25,7 @@ export const WhyChooseUsPage: React.FC<WhyChooseUsPageProps> = ({ onOpenQuote })
       {/* Banner with Subtle Overlay */}
       <section
         style={{
-          background: 'linear-gradient(135deg, rgba(6, 12, 24, 0.94) 0%, rgba(11, 21, 40, 0.90) 100%), url(/assets/hero_bg.jpg) center/cover no-repeat',
+          background: 'linear-gradient(135deg, rgba(6, 12, 24, 0.94) 0%, rgba(11, 21, 40, 0.90) 100%), url(./assets/hero_bg.jpg) center/cover no-repeat',
           color: '#ffffff',
           padding: '4.5rem 0',
           borderBottom: '1.5px solid rgba(212, 175, 55, 0.4)',
