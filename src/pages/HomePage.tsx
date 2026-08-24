@@ -88,8 +88,8 @@ export const HomePage: React.FC<HomePageProps> = ({
           color: '#ffffff',
           position: 'relative',
           overflow: 'hidden',
-          paddingTop: '5rem',
-          paddingBottom: '6rem',
+          paddingTop: 'clamp(2.75rem, 6vw, 5rem)',
+          paddingBottom: 'clamp(3.5rem, 7vw, 6rem)',
           borderBottom: '1.5px solid rgba(212, 175, 55, 0.4)'
         }}
       >
@@ -106,7 +106,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         />
 
         <div className="kdc-container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
             {/* Left Content */}
             <div>
               {/* Prominent KDC Logo Badge */}

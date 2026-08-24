@@ -158,7 +158,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           </div>
 
           {/* Category Tabs */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid #E2E8F0' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid #E2E8F0', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
             {categories.map((cat) => {
               const Icon = cat.icon;
               const isActive = selectedCategory === cat.id;
@@ -170,9 +170,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.45rem',
-                    padding: '0.55rem 1.1rem',
+                    padding: '0.55rem 1rem',
                     borderRadius: '8px',
-                    fontSize: '0.88rem',
+                    fontSize: '0.86rem',
                     fontWeight: 700,
                     border: '1px solid',
                     borderColor: isActive ? '#D4AF37' : '#E2E8F0',
@@ -180,7 +180,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                     color: isActive ? '#FFFFFF' : '#334155',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    boxShadow: isActive ? '0 4px 12px rgba(11,21,40,0.2)' : 'none'
+                    boxShadow: isActive ? '0 4px 12px rgba(11,21,40,0.2)' : 'none',
+                    whiteSpace: 'nowrap'
                   }}
                 >
                   <Icon size={15} color={isActive ? '#F3C343' : '#64748B'} />
@@ -192,8 +193,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
         </div>
 
         {/* Results Info */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem' }}>
-          <div style={{ fontSize: '1rem', color: '#334155', fontWeight: 600 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem', marginBottom: '1.75rem' }}>
+          <div style={{ fontSize: '0.95rem', color: '#334155', fontWeight: 600 }}>
             Showing <strong>{filteredProducts.length}</strong> matching products
           </div>
           <button onClick={onOpenQuote} className="btn btn-outline-gold btn-sm" style={{ color: '#B58E22', borderColor: '#D4AF37', background: 'rgba(255,255,255,0.9)' }}>
@@ -203,7 +204,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
         {/* Product Grid */}
         {filteredProducts.length > 0 ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))', gap: '1.5rem' }}>
             {filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}

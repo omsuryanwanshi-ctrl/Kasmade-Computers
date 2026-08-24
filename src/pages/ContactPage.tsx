@@ -71,7 +71,7 @@ export const ContactPage: React.FC = () => {
 
       <div className="kdc-container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Contact Info + Form Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', marginBottom: '3.5rem' }}>
           {/* Store Details Card with Glassmorphism */}
           <div
             className="kdc-glass-dark"

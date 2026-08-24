@@ -89,7 +89,7 @@ export const QuotePage: React.FC = () => {
       </section>
 
       <div className="kdc-container" style={{ position: 'relative', zIndex: 2 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
           {/* Main Form Box with Glassmorphism */}
           <div
             className="kdc-glass-dark"
