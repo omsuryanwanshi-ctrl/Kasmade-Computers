@@ -8,14 +8,14 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ size = 'md', variant = 'light', showText = true }) => {
   const dimensions = {
-    sm: { imgHeight: 38, font: '1.05rem', sub: '0.65rem' },
-    md: { imgHeight: 48, font: '1.25rem', sub: '0.72rem' },
-    lg: { imgHeight: 64, font: '1.5rem', sub: '0.82rem' },
-    hero: { imgHeight: 88, font: '1.75rem', sub: '0.9rem' }
+    sm: { imgHeight: 38, font: '1.05rem' },
+    md: { imgHeight: 48, font: '1.25rem' },
+    lg: { imgHeight: 64, font: '1.5rem' },
+    hero: { imgHeight: 88, font: '1.75rem' }
   };
 
   const isLight = variant === 'light';
-  const { imgHeight, font, sub } = dimensions[size];
+  const { imgHeight, font } = dimensions[size];
 
   return (
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.85rem', cursor: 'pointer', textDecoration: 'none' }}>
@@ -65,24 +65,6 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', variant = 'light', show
             }}
           >
             KASMADE <span style={{ color: '#F3C343' }}>DATA</span> CORP.
-          </div>
-          <div
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700,
-              fontSize: sub,
-              color: '#93C5FD',
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              marginTop: '0.1rem'
-            }}
-          >
-            <span>Multi Brand Store</span>
-            <span style={{ color: '#D4AF37' }}>•</span>
-            <span style={{ color: '#E2E8F0', opacity: 0.85 }}>Est. 2012</span>
           </div>
         </div>
       )}
