@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Logo } from './Logo';
-import { Phone, Mail, MapPin, Menu, X, FileText, ChevronRight, Lock } from 'lucide-react';
+import { Phone, Mail, MapPin, Menu, X, FileText, ChevronRight, Lock, Globe } from 'lucide-react';
 import { BUSINESS_INFO } from '../data/initialData';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeaderProps {
   activeTab: string;
@@ -11,16 +12,17 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQuote }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { lang, setLang, t } = useLanguage();
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'products', label: 'Products' },
-    { id: 'services', label: 'Services' },
-    { id: 'brands', label: 'Brands' },
-    { id: 'software', label: 'Software' },
-    { id: 'about', label: 'About Us' },
-    { id: 'why-us', label: 'Why Choose Us' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'home',     label: t('nav.home') },
+    { id: 'products', label: t('nav.products') },
+    { id: 'services', label: t('nav.services') },
+    { id: 'brands',   label: t('nav.brands') },
+    { id: 'software', label: t('nav.software') },
+    { id: 'about',    label: t('nav.about') },
+    { id: 'why-us',   label: t('nav.whyUs') },
+    { id: 'contact',  label: t('nav.contact') }
   ];
 
   const handleNavClick = (id: string) => {
@@ -28,6 +30,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQ
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const toggleLang = () => setLang(lang === 'en' ? 'mr' : 'en');
 
   return (
     <>
@@ -71,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQ
               title="Admin Portal"
             >
               <Lock size={11} color="#D4AF37" />
-              <span>Admin</span>
+              <span>{t('nav.admin')}</span>
             </button>
           </div>
         </div>
@@ -92,11 +96,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQ
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`nav-link ${activeTab === link.id ? 'active' : ''}`}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  outline: 'none'
-                }}
+                style={{ background: 'transparent', border: 'none', outline: 'none' }}
               >
                 {link.label}
               </button>
@@ -104,13 +104,23 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQ
           </nav>
 
           {/* Header Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            {/* Language Toggle - Desktop */}
+            <button
+              onClick={toggleLang}
+              className="lang-toggle-btn"
+              title={lang === 'en' ? 'Switch to Marathi' : 'Switch to English'}
+            >
+              <Globe size={14} />
+              <span>{lang === 'en' ? 'मराठी' : 'English'}</span>
+            </button>
+
             <button
               onClick={onOpenQuote}
               className="btn btn-gold btn-sm header-quote-btn"
             >
               <FileText size={16} />
-              <span>Get Quote</span>
+              <span>{t('nav.getQuote')}</span>
             </button>
 
             {/* Mobile Hamburger Button */}
@@ -151,6 +161,32 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQ
               </button>
             </div>
 
+            {/* Language Toggle - Mobile */}
+            <button
+              onClick={toggleLang}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                width: '100%',
+                padding: '0.65rem 0.9rem',
+                marginBottom: '0.75rem',
+                background: 'rgba(212, 175, 55, 0.12)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
+                borderRadius: '10px',
+                color: '#F3C343',
+                fontSize: '0.95rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                justifyContent: 'center'
+              }}
+            >
+              <Globe size={16} />
+              <span>
+                {lang === 'en' ? '🇮🇳 मराठीत बघा' : '🌐 View in English'}
+              </span>
+            </button>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
               {navLinks.map((link) => (
                 <button
@@ -170,7 +206,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQ
                 style={{ background: 'transparent', border: 'none', width: '100%', textAlign: 'left', cursor: 'pointer', color: '#D4AF37' }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Lock size={15} /> Admin Portal
+                  <Lock size={15} /> {t('nav.admin')}
                 </span>
                 <ChevronRight size={16} opacity={0.6} />
               </button>
@@ -186,7 +222,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onOpenQ
                 style={{ width: '100%' }}
               >
                 <FileText size={18} />
-                <span>Request Best Quote</span>
+                <span>{t('nav.getQuote')}</span>
               </button>
 
               <div style={{ fontSize: '0.8rem', color: '#94A3B8', textAlign: 'center', marginTop: '0.5rem' }}>

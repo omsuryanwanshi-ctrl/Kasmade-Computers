@@ -18,9 +18,9 @@ import {
   MapPin
 } from 'lucide-react';
 import { Logo } from '../components/Logo';
-
 import { AppStore } from '../services/store';
 import { SiteBanners } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface HomePageProps {
   products: Product[];
@@ -37,6 +37,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onEnquireProduct,
   onOpenQuote
 }) => {
+  const { t } = useLanguage();
   const [banners, setBanners] = React.useState<SiteBanners>(() => AppStore.getBanners());
 
   React.useEffect(() => {
@@ -52,27 +53,27 @@ export const HomePage: React.FC<HomePageProps> = ({
   const stats = [
     {
       icon: Calendar,
-      number: 'Since 2012',
-      title: 'Trusted Technology Service',
-      desc: '14+ Years of Continuous Service'
+      number: t('stats.since'),
+      title: t('stats.sinceTitle'),
+      desc: t('stats.sinceDesc')
     },
     {
       icon: Layers,
-      number: '16+ Brands',
-      title: 'Multi Brand Store',
-      desc: 'Products from leading brands'
+      number: t('stats.brands'),
+      title: t('stats.brandsTitle'),
+      desc: t('stats.brandsDesc')
     },
     {
       icon: Award,
-      number: '100%',
-      title: 'Customer Satisfaction',
-      desc: 'Customer-focused service motto'
+      number: t('stats.satisfaction'),
+      title: t('stats.satisfactionTitle'),
+      desc: t('stats.satisfactionDesc')
     },
     {
       icon: Wrench,
-      number: 'Expert',
-      title: 'Expert Technicians',
-      desc: 'Professional technical support'
+      number: t('stats.expert'),
+      title: t('stats.expertTitle'),
+      desc: t('stats.expertDesc')
     }
   ];
 
@@ -132,7 +133,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   width: 'fit-content'
                 }}
               >
-                <span>EST. 2012 • “SATISFACTION IS OUR MOTTO”</span>
+                <span>{t('hero.tagline')}</span>
               </div>
 
               <h1
@@ -146,7 +147,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   textShadow: '0 4px 20px rgba(0,0,0,0.5)'
                 }}
               >
-                KASMADE <span style={{ background: 'linear-gradient(135deg, #FFF2BE 0%, #F3C343 50%, #D4AF37 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>DATA</span> CORPORATION
+                {t('hero.title1')} <span style={{ background: 'linear-gradient(135deg, #FFF2BE 0%, #F3C343 50%, #D4AF37 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('hero.title2')}</span> {t('hero.title3')}
               </h1>
 
               <p
@@ -159,7 +160,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   textShadow: '0 2px 10px rgba(0,0,0,0.5)'
                 }}
               >
-                Multi Brand Computer Sales, CCTV & Technical Services
+                {t('hero.subtitle')}
               </p>
 
               {/* Action Buttons */}
@@ -168,7 +169,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onClick={() => onNavigate('products')}
                   className="btn btn-gold btn-lg"
                 >
-                  <span>Explore Products</span>
+                  <span>{t('hero.exploreProducts')}</span>
                   <ArrowRight size={18} />
                 </button>
 
@@ -177,7 +178,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   className="btn btn-outline-white btn-lg"
                 >
                   <PhoneCall size={18} color="#D4AF37" />
-                  <span>Contact Us</span>
+                  <span>{t('hero.contactUs')}</span>
                 </button>
               </div>
             </div>
@@ -192,8 +193,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid rgba(212, 175, 55, 0.3)', paddingBottom: '0.75rem' }}>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#FFFFFF' }}>Technology & Service Store</div>
-                  <span style={{ fontSize: '0.75rem', background: '#D4AF37', color: '#0B1528', padding: '0.2rem 0.6rem', borderRadius: '4px', fontWeight: 800 }}>DEOLA, NASHIK</span>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#FFFFFF' }}>{t('hero.storeTitle')}</div>
+                  <span style={{ fontSize: '0.75rem', background: '#D4AF37', color: '#0B1528', padding: '0.2rem 0.6rem', borderRadius: '4px', fontWeight: 800 }}>{t('hero.storeLocation')}</span>
                 </div>
 
                 {/* Tech Highlights Grid */}
@@ -238,10 +239,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                 >
                   <div>
                     <div style={{ fontSize: '0.75rem', color: '#F3C343', fontWeight: 800, textTransform: 'uppercase' }}>
-                      Need Best Price?
+                      {t('hero.needPrice')}
                     </div>
                     <div style={{ fontSize: '0.88rem', color: '#FFFFFF', fontWeight: 600 }}>
-                      Quick Quote on WhatsApp or Call
+                      {t('hero.quickQuote')}
                     </div>
                   </div>
 
@@ -250,7 +251,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     className="btn btn-gold btn-sm"
                     style={{ flexShrink: 0 }}
                   >
-                    Get Quote
+                    {t('hero.getQuote')}
                   </button>
                 </div>
               </div>
@@ -318,11 +319,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="kdc-container">
           <div className="section-header">
             <span className="section-tag">
-              <Sparkles size={13} /> Genuine Multi Brand Products
+              <Sparkles size={13} /> {t('section.products.tag')}
             </span>
-            <h2 className="section-title">Popular Hardware & Systems</h2>
+            <h2 className="section-title">{t('section.products.title')}</h2>
             <p className="section-desc">
-              Browse top-selling laptops, all-in-one PCs, CCTV kits, components, and printers. Request instant quotes with official brand warranty.
+              {t('section.products.desc')}
             </p>
           </div>
 
@@ -341,7 +342,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               onClick={() => onNavigate('products')}
               className="btn btn-navy btn-lg"
             >
-              <span>View Full Product Catalog ({products.length}+ Items)</span>
+              <span>{t('section.products.viewAll')} ({products.length}+ Items)</span>
               <ArrowRight size={18} color="#F3C343" />
             </button>
           </div>
@@ -353,11 +354,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="kdc-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="section-header">
             <span className="section-tag light">
-              <Wrench size={13} /> Certified Support Center • Est. 2012
+              <Wrench size={13} /> {t('section.services.tag')}
             </span>
-            <h2 className="section-title light">Professional Technical Services</h2>
+            <h2 className="section-title light">{t('section.services.title')}</h2>
             <p className="section-desc light">
-              Comprehensive diagnostics, hardware troubleshooting, operating system setup, networking, and AMC contracts for offices and institutions.
+              {t('section.services.desc')}
             </p>
           </div>
 
@@ -394,7 +395,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   className="btn btn-outline-gold btn-sm"
                   style={{ width: '100%' }}
                 >
-                  Book Service / Enquire
+                  {t('services.enquire')}
                 </button>
               </div>
             ))}
@@ -405,7 +406,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               onClick={() => onNavigate('services')}
               className="btn btn-gold btn-lg"
             >
-              <span>Explore All 9 Technical Service Categories</span>
+              <span>{t('section.services.viewAll')}</span>
               <ArrowRight size={18} />
             </button>
           </div>
@@ -417,11 +418,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="kdc-container">
           <div className="section-header">
             <span className="section-tag">
-              <Layers size={13} /> Official Technology Partners
+              <Layers size={13} /> {t('section.brands.tag')}
             </span>
-            <h2 className="section-title">Multi Brand Store</h2>
+            <h2 className="section-title">{t('section.brands.title')}</h2>
             <p className="section-desc">
-              All Your Technology Needs Under One Roof. We provide genuine hardware from world-class technology leaders.
+              {t('section.brands.desc')}
             </p>
           </div>
 
@@ -457,7 +458,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="btn btn-outline-gold btn-md"
               style={{ color: '#B58E22', borderColor: '#D4AF37' }}
             >
-              <span>View All Brands & Warranty Coverage</span>
+              <span>{t('section.brands.viewAll')}</span>
               <ArrowRight size={16} />
             </button>
           </div>
@@ -469,11 +470,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="kdc-container">
           <div className="section-header">
             <span className="section-tag">
-              <Award size={13} /> Proven Track Record
+              <Award size={13} /> {t('section.whyUs.tag')}
             </span>
-            <h2 className="section-title">Why Choose Kasmade Data Corporation?</h2>
+            <h2 className="section-title">{t('section.whyUs.title')}</h2>
             <p className="section-desc">
-              Building lasting trust with high-quality genuine products, fast technical turnaround, and friendly customer support.
+              {t('section.whyUs.desc')}
             </p>
           </div>
 
@@ -501,23 +502,23 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
             <div>
               <span className="section-tag light" style={{ marginBottom: '0.5rem' }}>
-                <MapPin size={13} /> Visit Our Store in Deola
+                <MapPin size={13} /> {t('cta.tag')}
               </span>
               <h2 style={{ fontSize: '2.3rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '1rem', textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
-                Ready to Upgrade Your Technology?
+                {t('cta.title')}
               </h2>
               <p style={{ fontSize: '1.08rem', color: '#E2E8F0', lineHeight: 1.75, marginBottom: '2rem', textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
-                Visit our showroom at Shop No. 2, Near Munjoba Par, Subhash Road, Deola, Nashik or contact our team for immediate quotations and service scheduling.
+                {t('cta.desc')}
               </p>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                 <a href={`tel:${BUSINESS_INFO.phones[0]}`} className="btn btn-gold btn-lg">
                   <PhoneCall size={18} />
-                  <span>Call +91 {BUSINESS_INFO.phones[0]}</span>
+                  <span>{t('cta.call')} +91 {BUSINESS_INFO.phones[0]}</span>
                 </a>
 
                 <button onClick={onOpenQuote} className="btn btn-outline-white btn-lg">
-                  <span>Get Quotation</span>
+                  <span>{t('cta.getQuotation')}</span>
                   <ArrowRight size={18} />
                 </button>
               </div>
@@ -526,27 +527,27 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="kdc-glass-dark" style={{ padding: '2.25rem' }}>
               <h3 style={{ color: '#FFFFFF', fontSize: '1.35rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                 <Award size={22} color="#F3C343" />
-                <span>Store Quick Information</span>
+                <span>{t('cta.storeInfo')}</span>
               </h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.94rem' }}>
                 <div>
-                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>Store Address:</strong>
+                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>{t('cta.address')}</strong>
                   <span style={{ color: '#E2E8F0' }}>{BUSINESS_INFO.address}</span>
                 </div>
 
                 <div>
-                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>Owner / Contact:</strong>
+                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>{t('cta.owner')}</strong>
                   <span style={{ color: '#E2E8F0' }}>{BUSINESS_INFO.owner}</span>
                 </div>
 
                 <div>
-                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>Contact Numbers:</strong>
+                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>{t('cta.phones')}</strong>
                   <span style={{ color: '#E2E8F0' }}>+91 {BUSINESS_INFO.phones.join(' / +91 ')} | Office: {BUSINESS_INFO.officePhone}</span>
                 </div>
 
                 <div>
-                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>Official Email:</strong>
+                  <strong style={{ color: '#F3C343', display: 'block', marginBottom: '0.2rem' }}>{t('cta.email')}</strong>
                   <span style={{ color: '#93C5FD' }}>{BUSINESS_INFO.email}</span>
                 </div>
               </div>
