@@ -9,7 +9,8 @@ const BANNERS_KEY = 'kdc_banners_v1';
 export const DEFAULT_BANNERS: SiteBanners = {
   heroBg: './assets/hero_bg.jpg',
   servicesBg: './assets/services_bg.jpg',
-  promoBanner: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=1920&auto=format&fit=crop&q=80'
+  promoBanner: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=1920&auto=format&fit=crop&q=80',
+  ownerPhoto: './assets/owner_manoj_kandekar.jpg'
 };
 
 export class AppStore {

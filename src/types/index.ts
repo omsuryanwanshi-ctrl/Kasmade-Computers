@@ -59,6 +59,7 @@ export interface SiteBanners {
   heroBg: string;
   servicesBg: string;
   promoBanner?: string;
+  ownerPhoto?: string;
 }
 
 export interface BusinessInfo {

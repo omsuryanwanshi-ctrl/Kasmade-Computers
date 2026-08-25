@@ -737,9 +737,73 @@ export const AdminPage: React.FC<AdminPageProps> = ({ products, setProducts }) =
                 </div>
               </div>
 
+              {/* 4. Owner / Founder Photo */}
+              <div style={{ background: '#FFF8E7', padding: '1.5rem', borderRadius: '12px', border: '2px solid #D4AF37' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                  <div>
+                    <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#0B1528' }}>Owner / Founder Photo</h4>
+                    <p style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '0.2rem' }}>This photo appears on the About Us page as the founder portrait.</p>
+                  </div>
+                  <span style={{ fontSize: '0.75rem', background: '#D4AF37', color: '#0B1528', padding: '0.2rem 0.6rem', borderRadius: '4px', fontWeight: 700 }}>ABOUT PAGE</span>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
+                  {/* Preview */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ width: '160px', height: '200px', borderRadius: '12px', overflow: 'hidden', border: '3px solid #D4AF37', background: '#0B1528', boxShadow: '0 8px 25px rgba(212,175,55,0.25)' }}>
+                      <img
+                        src={banners.ownerPhoto || './assets/owner_manoj_kandekar.jpg'}
+                        alt="Owner Portrait Preview"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                        onError={(e) => { e.currentTarget.src = './assets/owner_manoj_kandekar.jpg'; }}
+                      />
+                    </div>
+                    <span style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 600 }}>Manoj A. Kandekar — Live Preview</span>
+                  </div>
+
+                  {/* Upload Actions */}
+                  <div>
+                    <div className="form-group">
+                      <label className="form-label" style={{ color: '#334155', fontWeight: 700 }}>📸 Upload New Owner Photo</label>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleBannerUpload('ownerPhoto', e)}
+                        style={{ padding: '0.5rem', background: '#FFFFFF', border: '1.5px solid #D4AF37', borderRadius: '8px', width: '100%', fontSize: '0.88rem' }}
+                      />
+                      <p style={{ fontSize: '0.75rem', color: '#64748B', marginTop: '0.35rem' }}>Recommended: Portrait/vertical photo, 400×500px or taller.</p>
+                    </div>
+
+                    <div className="form-group" style={{ marginBottom: 0 }}>
+                      <label className="form-label" style={{ color: '#334155' }}>Or Image URL</label>
+                      <input
+                        type="text"
+                        className="form-input"
+                        style={{ background: '#FFFFFF', color: '#0F172A', borderColor: '#D4AF37' }}
+                        value={banners.ownerPhoto || ''}
+                        onChange={(e) => setBanners({ ...banners, ownerPhoto: e.target.value })}
+                        placeholder="https://example.com/photo.jpg"
+                      />
+                    </div>
+
+                    {banners.ownerPhoto && banners.ownerPhoto !== './assets/owner_manoj_kandekar.jpg' && (
+                      <button
+                        type="button"
+                        onClick={() => setBanners({ ...banners, ownerPhoto: './assets/owner_manoj_kandekar.jpg' })}
+                        className="btn btn-navy btn-sm"
+                        style={{ marginTop: '0.75rem' }}
+                      >
+                        <RefreshCw size={13} />
+                        <span>Restore Original Photo</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               <button type="submit" className="btn btn-gold btn-lg">
                 <Save size={18} />
-                <span>Save All Banner Changes</span>
+                <span>Save All Changes</span>
               </button>
             </form>
           </div>

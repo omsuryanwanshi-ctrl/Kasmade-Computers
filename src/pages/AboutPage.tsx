@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BUSINESS_INFO } from '../data/initialData';
 import { Logo } from '../components/Logo';
 import { Calendar, CheckCircle2, HeartHandshake, Award, ShieldCheck, PhoneCall, Mail, MapPin } from 'lucide-react';
+import { AppStore } from '../services/store';
+import { SiteBanners } from '../types';
 
 interface AboutPageProps {
   onOpenQuote: () => void;
@@ -9,6 +11,18 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuote, onNavigate }) => {
+  const [banners, setBanners] = useState<SiteBanners>(() => AppStore.getBanners());
+
+  useEffect(() => {
+    const handleBannersUpdated = () => {
+      setBanners(AppStore.getBanners());
+    };
+    window.addEventListener('kdc_banners_updated', handleBannersUpdated);
+    return () => window.removeEventListener('kdc_banners_updated', handleBannersUpdated);
+  }, []);
+
+  const ownerPhoto = banners.ownerPhoto || './assets/owner_manoj_kandekar.jpg';
+
   return (
     <div className="bg-showroom-tech" style={{ minHeight: '85vh', paddingBottom: '5rem', color: '#FFFFFF' }}>
       {/* Banner */}
@@ -67,7 +81,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuote, onNavigate })
               }}
             >
               <img
-                src="./assets/owner_manoj_kandekar.jpg"
+                src={ownerPhoto}
                 alt="Manoj A. Kandekar - Owner & Founder"
                 style={{
                   width: '100%',
@@ -75,6 +89,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenQuote, onNavigate })
                   objectFit: 'cover',
                   objectPosition: 'center top'
                 }}
+                onError={(e) => { e.currentTarget.src = './assets/owner_manoj_kandekar.jpg'; }}
               />
               <div
                 style={{
