@@ -17,7 +17,6 @@ import {
   Sparkles,
   MapPin
 } from 'lucide-react';
-import { Logo } from '../components/Logo';
 import { AppStore } from '../services/store';
 import { SiteBanners } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -110,11 +109,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
             {/* Left Content */}
             <div>
-              {/* Prominent KDC Logo Badge */}
-              <div style={{ marginBottom: '1.25rem', display: 'inline-block', background: 'rgba(11, 21, 40, 0.8)', padding: '0.5rem 0.9rem', borderRadius: '12px', border: '1px solid rgba(212, 175, 55, 0.4)', backdropFilter: 'blur(10px)' }}>
-                <Logo size="md" variant="light" />
-              </div>
-
               {/* Tagline Badge */}
               <div
                 style={{
